@@ -4,9 +4,9 @@ This is a cloned repository of the [Flash Cards](http://backend.turing.io/module
 
 ## Overview
 
-In this project, you will write a program to simulate a set of flash cards. A user will be able to see the questions, make guesses, and see a final score at the end of the round.
+> In this project, you will write a program to simulate a set of flash cards. A user will be able to see the questions, make guesses, and see a final score at the end of the round.
 
-In order to build good habits, we’ve broken the project into small classes to demonstrate objects that have a single responsibility.
+> In order to build good habits, we’ve broken the project into small classes to demonstrate objects that have a single responsibility.
 
 ## Learning Goals
 
