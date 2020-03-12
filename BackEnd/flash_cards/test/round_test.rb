@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/card'
@@ -8,10 +10,10 @@ require './lib/round'
 # Test the Round class
 class RoundTest < Minitest::Spec
   before do
-    @card_1 = Card.new('What is the capital of Alaska?', 'Juneau', :Geography)
-    @card_2 = Card.new('The Viking spacecraft sent back to Earth photographs and reports about the surface of which planet?', 'Mars', :STEM)
-    @card_3 = Card.new('Describe in words the exact direction that is 697.5° clockwise from due north?"', 'North north west', :STEM)
-    @cards = [@card_1, @card_2, @card_3]
+    @card1 = Card.new('What is the capital of Alaska?', 'Juneau', :Geography)
+    @card2 = Card.new('The Viking spacecraft sent back to Earth photographs and reports about the surface of which planet?', 'Mars', :STEM)
+    @card3 = Card.new('Describe in words the exact direction that is 697.5° clockwise from due north?"', 'North north west', :STEM)
+    @cards = [@card1, @card2, @card3]
     @deck = Deck.new(@cards)
     @round = Round.new(@deck)
   end
@@ -29,8 +31,8 @@ class RoundTest < Minitest::Spec
       _(@round.turns.empty?).must_equal true
     end
 
-    it 'has a current card that is card_1' do
-      _(@round.current_card).must_equal @card_1
+    it 'has a current card that is card1' do
+      _(@round.current_card).must_equal @card1
     end
   end
 
@@ -57,7 +59,7 @@ class RoundTest < Minitest::Spec
 
       it 'has a new card after turn' do
         turn_with_correct_guess
-        _(@round.current_card).wont_match @card_1
+        _(@round.current_card).wont_match @card1
       end
     end
 
@@ -75,7 +77,7 @@ class RoundTest < Minitest::Spec
     end
 
     describe 'when there are two turns (1 incorrect, 1 correct guess)' do
-      before do 
+      before do
         @round.take_turn('Juneau')
         @round.take_turn('Meow')
       end
@@ -106,7 +108,7 @@ class RoundTest < Minitest::Spec
       end
 
       it 'has the third card as current_card' do
-        _(@round.current_card).must_equal @card_3
+        _(@round.current_card).must_equal @card3
       end
     end
   end

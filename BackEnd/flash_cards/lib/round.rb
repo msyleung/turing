@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Create a Round of Game in Flashcards
 class Round
   attr_accessor(:deck, :turns, :current_card)
@@ -35,7 +37,7 @@ class Round
   end
 
   def percent_correct_by_category(category)
-    round_two((number_correct_by_category(category).to_f / 
+    round_two((number_correct_by_category(category).to_f /
     @turns.select { |t| t.card.category == category }.size) * 100)
   end
 end
