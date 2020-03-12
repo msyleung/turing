@@ -8,8 +8,8 @@ In order to build good habits, we’ve broken the project into small classes to 
 
 ## Learning Goals
 
-- [ ] Utilize Test Driven Development
-- [ ] Practice Algorithmic Thinking
-- [ ] Create an Object Oriented solution to a problem without being given full specifications
-- [ ] ~Work in a pair~
-- [ ] Use Pull Requests ~to collaborate with a partner~
+- Utilize Test Driven Development
+- Practice Algorithmic Thinking
+- Create an Object Oriented solution to a problem without being given full specifications
+- ~Work in a pair~
+- Use Pull Requests ~to collaborate with a partner~

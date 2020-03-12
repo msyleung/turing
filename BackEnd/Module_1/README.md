@@ -6,8 +6,8 @@
   - [x] Iteration 3: turn it into a CLI (game)
   - [x] Iteration 4: add card generator
   - [x] Write tests :eyes:
-- [ ] Battleship
-  - [ ]
+- [ ] [Battleship]()
+  - [x]
   - [ ]
   - [ ]
   - [ ]
