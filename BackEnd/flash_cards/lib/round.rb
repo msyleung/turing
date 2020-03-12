@@ -1,5 +1,5 @@
 # Create a Round of Game in Flashcards
-class Round  
+class Round
   attr_accessor(:deck, :turns, :current_card)
 
   def initialize(deck)
@@ -13,9 +13,9 @@ class Round
   end
 
   def take_turn(guess)
-    @turns.unshift(Turn.new(guess, @current_card))
+    @turns.push(Turn.new(guess, @current_card))
     set_current_card
-    @turns.first
+    @turns.last
   end
 
   def number_correct
@@ -27,7 +27,7 @@ class Round
   end
 
   def round_two(num)
-    num.round
+    num.round(1)
   end
 
   def percent_correct

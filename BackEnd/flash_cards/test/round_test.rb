@@ -54,6 +54,11 @@ class RoundTest < Minitest::Spec
         turn_with_correct_guess
         _(@round.number_correct).must_equal 1
       end
+
+      it 'has a new card after turn' do
+        turn_with_correct_guess
+        _(@round.current_card).wont_match @card_1
+      end
     end
 
     describe 'when turn guess is incorrect' do
@@ -69,8 +74,40 @@ class RoundTest < Minitest::Spec
       end
     end
 
-    describe 'when there are two turns' do
-      
+    describe 'when there are two turns (1 incorrect, 1 correct guess)' do
+      before do 
+        @round.take_turn('Juneau')
+        @round.take_turn('Meow')
+      end
+
+      it 'has a count of two turns' do
+        _(@round.turns.count).must_equal 2
+      end
+
+      it 'has a last feedback of Incorrect' do
+        _(@round.turns.last.feedback).must_equal 'Incorrect.'
+      end
+
+      it 'has number_correct of 1' do
+        _(@round.number_correct).must_equal 1
+      end
+
+      it 'has accurate number correct by category' do
+        _(@round.number_correct_by_category(:Geography)).must_equal 1
+        _(@round.number_correct_by_category(:STEM)).must_equal 0
+      end
+
+      it 'has accurate percent_correct' do
+        _(@round.percent_correct).must_equal 50.0
+      end
+
+      it 'has accurate percent_correct_by_category' do
+        _(@round.percent_correct_by_category(:Geography)).must_equal 100.0
+      end
+
+      it 'has the third card as current_card' do
+        _(@round.current_card).must_equal @card_3
+      end
     end
   end
 end
