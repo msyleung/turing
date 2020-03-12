@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Class to make cards
 class Card
   attr_accessor(:question, :answer, :category)

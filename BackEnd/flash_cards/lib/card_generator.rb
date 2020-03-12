@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'card'
 
 # Class to mass-generate cards from a given file

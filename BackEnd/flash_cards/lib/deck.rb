@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Deck of cards
 class Deck
   attr_accessor(:cards)

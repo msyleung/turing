@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require_relative 'turn'
 # Create a Round of Game in Flashcards
 class Round
   attr_accessor(:deck, :turns, :current_card)

@@ -2,18 +2,15 @@
 
 require 'minitest/autorun'
 require 'minitest/pride'
-require './lib/card'
-require './lib/turn'
+require './lib/card_generator'
 require './lib/deck'
 require './lib/round'
 
 # Test the Round class
 class RoundTest < Minitest::Spec
   before do
-    @card1 = Card.new('What is the capital of Alaska?', 'Juneau', :Geography)
-    @card2 = Card.new('The Viking spacecraft sent back to Earth photographs and reports about the surface of which planet?', 'Mars', :STEM)
-    @card3 = Card.new('Describe in words the exact direction that is 697.5° clockwise from due north?"', 'North north west', :STEM)
-    @cards = [@card1, @card2, @card3]
+    @cards = CardGenerator.new('cards.txt').cards
+    @card1 = @cards.first
     @deck = Deck.new(@cards)
     @round = Round.new(@deck)
   end
@@ -38,7 +35,9 @@ class RoundTest < Minitest::Spec
 
   describe 'when turns are occuring' do
     describe 'when guess is correct' do
-      let(:turn_with_correct_guess) { @round.take_turn('Juneau') }
+      let(:turn_with_correct_guess) do
+        @round.take_turn(@card1.answer)
+      end
 
       it 'returns a Turn object' do
         _(turn_with_correct_guess).must_be_instance_of Turn
@@ -78,7 +77,7 @@ class RoundTest < Minitest::Spec
 
     describe 'when there are two turns (1 incorrect, 1 correct guess)' do
       before do
-        @round.take_turn('Juneau')
+        @round.take_turn(@card1.answer)
         @round.take_turn('Meow')
       end
 
@@ -95,8 +94,8 @@ class RoundTest < Minitest::Spec
       end
 
       it 'has accurate number correct by category' do
-        _(@round.number_correct_by_category(:Geography)).must_equal 1
-        _(@round.number_correct_by_category(:STEM)).must_equal 0
+        _(@round.number_correct_by_category(@card1.category)).must_equal 1
+        _(@round.number_correct_by_category('Turing Staff')).must_equal 0
       end
 
       it 'has accurate percent_correct' do
@@ -104,11 +103,11 @@ class RoundTest < Minitest::Spec
       end
 
       it 'has accurate percent_correct_by_category' do
-        _(@round.percent_correct_by_category(:Geography)).must_equal 100.0
+        _(@round.percent_correct_by_category(@card1.category)).must_equal 100.0
       end
 
       it 'has the third card as current_card' do
-        _(@round.current_card).must_equal @card3
+        _(@round.current_card).must_equal @cards[2]
       end
     end
   end

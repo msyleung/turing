@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Class to create Turns in a Game
 class Turn
   attr_accessor(:guess, :card)
