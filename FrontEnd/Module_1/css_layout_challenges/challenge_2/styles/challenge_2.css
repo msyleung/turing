@@ -4,10 +4,29 @@ div {
   background-color: black;
   color: white;
 }
-.div1 {
-  float: right;
+
+.row-1,
+.row-2,
+.row-3 {
+  display: flex;
+  width: 100%;
 }
 
-.div2 {
-  float: left;
+.column-1,
+.column-2,
+.column-3 {
+  width: 33%;
+  display: flex;
+}
+
+.column-1 {
+  justify-content: left;
+}
+
+.column-2 {
+  justify-content: center;
+}
+
+.column-3 {
+  justify-content: right;
 }
